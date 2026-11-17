@@ -1,0 +1,24 @@
+name: Tâche technique
+description: Un travail sans valeur directe pour l'utilisateur, nécessaire au projet.
+labels: ["type: chore"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: Quoi
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Pourquoi
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Terminé quand
+      value: |
+        - [ ] 
+    validations:
+      required: true

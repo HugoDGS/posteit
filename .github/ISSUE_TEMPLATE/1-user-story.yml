@@ -1,0 +1,49 @@
+name: User story
+description: Une fonctionnalité vue par celui qui l'utilise.
+title: "En tant que …, je veux …"
+labels: ["type: feat"]
+body:
+  - type: dropdown
+    id: persona
+    attributes:
+      label: En tant que
+      options:
+        - candidat
+        - recruteur
+        - admin entreprise
+        - admin plateforme
+    validations:
+      required: true
+  - type: input
+    id: want
+    attributes:
+      label: Je veux
+      placeholder: déposer mon CV en PDF
+    validations:
+      required: true
+  - type: input
+    id: goal
+    attributes:
+      label: Afin de
+      placeholder: recevoir les offres qui me correspondent
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critères d'acceptation
+      description: Ce que le Product Owner vérifiera à la recette.
+      value: |
+        - [ ] Étant donné …, quand …, alors …
+        - [ ] 
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priorité
+      options:
+        - MVP
+        - Bonus
+    validations:
+      required: true
