@@ -1,0 +1,79 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+  workflow_dispatch:
+
+# Un nouveau push sur une PR annule l'exécution précédente, devenue inutile.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Lecture seule par défaut : aucun job n'écrit dans le dépôt.
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint et format
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+      - run: pnpm format:check
+      - run: pnpm lint
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+      - run: pnpm typecheck
+
+  test:
+    name: Tests (Node ${{ matrix.node }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        # La version minimale de "engines" et la version utilisée par l'équipe.
+        node: ['24', '26']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+        with:
+          node-version: ${{ matrix.node }}
+      - run: pnpm test
+
+  # Seul job agrégé exigé par la protection des branches : ajouter un job
+  # ici ne demande pas de changer les réglages du dépôt.
+  ci-ok:
+    name: CI ok
+    if: always()
+    needs: [lint, typecheck, test]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Vérifier le résultat des jobs
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          for result in $RESULTS; do
+            case "$result" in
+              success | skipped) ;;
+              *) echo "::error::Un job a fini en « $result »." && exit 1 ;;
+            esac
+          done
