@@ -19,6 +19,7 @@ catalog:
   # 66+ exige ESLint 10 : on reste sur la 65 tant qu'on est sur ESLint 9.
   eslint-plugin-unicorn: 65.0.1
   globals: 17.14.0
+  prettier: 3.10.1
   # typescript-eslint 8 supporte TypeScript < 6.1.
   typescript: 6.0.3
   typescript-eslint: 8.73.0
