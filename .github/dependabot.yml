@@ -14,12 +14,13 @@ updates:
     groups:
       dependencies:
         patterns: ['*']
-    # Montées majeures bloquées tant que les plugins ne les supportent pas.
+    # Montées bloquées tant que les plugins ne les supportent pas.
     # À retirer, puis à faire dans une PR dédiée, dès que c'est le cas.
     ignore:
-      # typescript-eslint 8 exige TypeScript < 6.1.
+      # typescript-eslint 8 exige TypeScript < 6.1 : la 6.1, une mineure,
+      # casserait déjà le lint. Les correctifs 6.0.x restent proposés.
       - dependency-name: typescript
-        update-types: ['version-update:semver-major']
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
       # eslint-plugin-react exige ESLint 9 au plus.
       - dependency-name: eslint
         update-types: ['version-update:semver-major']
