@@ -58,12 +58,30 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: pnpm test
 
+  commitlint:
+    name: Commits conventionnels
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Tout l'historique, pour lire chaque commit de la PR.
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: ./.github/actions/setup
+      # Les SHA passent par l'environnement, jamais interpolés dans le script.
+      - run: pnpm exec commitlint --from "$BASE_SHA" --to "$HEAD_SHA" --verbose
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+
   # Seul job agrégé exigé par la protection des branches : ajouter un job
   # ici ne demande pas de changer les réglages du dépôt.
   ci-ok:
     name: CI ok
     if: always()
-    needs: [lint, typecheck, test]
+    needs: [lint, typecheck, test, commitlint]
     runs-on: ubuntu-24.04
     timeout-minutes: 2
     steps:
