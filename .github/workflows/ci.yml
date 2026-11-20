@@ -76,12 +76,27 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
 
+  audit:
+    name: Audit des dépendances
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # L'audit lit le lockfile : pas besoin d'installer les dépendances.
+      - uses: ./.github/actions/setup
+        with:
+          install: 'false'
+      # Toutes les alertes sont affichées ; seules high et critical bloquent.
+      - run: pnpm audit --audit-level=high
+
   # Seul job agrégé exigé par la protection des branches : ajouter un job
   # ici ne demande pas de changer les réglages du dépôt.
   ci-ok:
     name: CI ok
     if: always()
-    needs: [lint, typecheck, test, commitlint]
+    needs: [lint, typecheck, test, commitlint, audit]
     runs-on: ubuntu-24.04
     timeout-minutes: 2
     steps:
