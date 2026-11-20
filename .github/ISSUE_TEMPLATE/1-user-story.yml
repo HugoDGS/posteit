@@ -1,7 +1,7 @@
 name: User story
 description: Une fonctionnalité vue par celui qui l'utilise.
-title: "En tant que …, je veux …"
-labels: ["type: feat"]
+title: 'En tant que …, je veux …'
+labels: ['type: feat']
 body:
   - type: dropdown
     id: persona

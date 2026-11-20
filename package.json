@@ -5,11 +5,18 @@
   "description": "Poste-it, la plateforme d'offres d'emploi et de stages qui lit votre CV et explique chaque score.",
   "type": "module",
   "scripts": {
-    "typecheck": "pnpm -r --if-present typecheck"
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc -p tsconfig.json && pnpm -r --if-present typecheck"
   },
   "devDependencies": {
+    "@posteit/eslint": "workspace:*",
     "@posteit/tsconfig": "workspace:*",
     "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
     "typescript": "catalog:"
   },
   "packageManager": "pnpm@12.21.0",

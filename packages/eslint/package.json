@@ -1,0 +1,48 @@
+{
+  "name": "@posteit/eslint",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Configurations ESLint partagées de Poste-it (flat config).",
+  "type": "module",
+  "exports": {
+    "./base": "./base.js",
+    "./nest": "./nest.js",
+    "./react": "./react.js"
+  },
+  "files": [
+    "*.js"
+  ],
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@eslint/js": "catalog:",
+    "@posteit/tsconfig": "workspace:*",
+    "@stylistic/eslint-plugin": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-prettier": "catalog:",
+    "eslint-plugin-perfectionist": "catalog:",
+    "eslint-plugin-react": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "eslint-plugin-sonarjs": "catalog:",
+    "eslint-plugin-unicorn": "catalog:",
+    "globals": "catalog:",
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:"
+  },
+  "peerDependencies": {
+    "@eslint/js": "*",
+    "@stylistic/eslint-plugin": "*",
+    "eslint": "*",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-perfectionist": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-react-hooks": "*",
+    "eslint-plugin-sonarjs": "*",
+    "eslint-plugin-unicorn": "*",
+    "globals": "*",
+    "typescript": "*",
+    "typescript-eslint": "*"
+  }
+}

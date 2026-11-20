@@ -55,14 +55,14 @@ flowchart TB
 
 ## Stack
 
-| Couche | Technologies |
-| --- | --- |
-| Front | React, Vite, TypeScript |
-| API et services | NestJS, gRPC, TypeScript strict |
-| Jobs | BullMQ |
-| Données | MongoDB (une base par service), GridFS pour les CV, Redis |
-| Qualité | ESLint (config flat), Prettier, Vitest, Testing Library |
-| Livraison | pnpm workspaces, Docker Compose, GitHub Actions |
+| Couche          | Technologies                                              |
+| --------------- | --------------------------------------------------------- |
+| Front           | React, Vite, TypeScript                                   |
+| API et services | NestJS, gRPC, TypeScript strict                           |
+| Jobs            | BullMQ                                                    |
+| Données         | MongoDB (une base par service), GridFS pour les CV, Redis |
+| Qualité         | ESLint (config flat), Prettier, Vitest, Testing Library   |
+| Livraison       | pnpm workspaces, Docker Compose, GitHub Actions           |
 
 ## Structure
 
