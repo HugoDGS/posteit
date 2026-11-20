@@ -13,9 +13,17 @@ updates:
       prefix: build
       include: scope
   - package-ecosystem: github-actions
-    directory: /
+    # Les workflows et l'action locale de préparation, épinglés par SHA.
+    directories:
+      - /
+      - /.github/actions/setup
     schedule:
       interval: weekly
     target-branch: develop
+    # Une version publiée depuis moins de 7 jours n'est pas proposée : la
+    # plupart des versions piratées sont retirées avant. Les correctifs de
+    # sécurité ne sont pas retardés.
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: ci
