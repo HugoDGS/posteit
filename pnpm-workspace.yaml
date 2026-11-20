@@ -28,3 +28,8 @@ catalog:
   # typescript-eslint 8 supporte TypeScript < 6.1.
   typescript: 6.0.3
   typescript-eslint: 8.73.0
+
+# GHSA-g3hv-75wg-m249 : sonarjs tire minimatch 10, vulnérable. On ne cible que
+# sonarjs, car ESLint dépend de minimatch 3, dont l'API diffère de la 11.
+overrides:
+  'eslint-plugin-sonarjs>minimatch': ^11.0.1
