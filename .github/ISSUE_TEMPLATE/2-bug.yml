@@ -1,7 +1,7 @@
 name: Bug
 description: Un comportement qui ne correspond pas à ce qui est attendu.
-title: "[Bug] "
-labels: ["type: fix"]
+title: '[Bug] '
+labels: ['type: fix']
 body:
   - type: textarea
     id: actual

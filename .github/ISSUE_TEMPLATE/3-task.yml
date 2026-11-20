@@ -1,6 +1,6 @@
 name: Tâche technique
 description: Un travail sans valeur directe pour l'utilisateur, nécessaire au projet.
-labels: ["type: chore"]
+labels: ['type: chore']
 body:
   - type: textarea
     id: what

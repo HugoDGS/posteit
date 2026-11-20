@@ -17,12 +17,12 @@ Ce guide est la règle commune de l'équipe. Il vaut pour tout le monde, relecte
 <type>/<app>-<sujet>
 ```
 
-| Exemple | Pour |
-| --- | --- |
-| `feat/offer-search` | une fonctionnalité |
-| `fix/gateway-refresh-token` | une correction |
-| `docs/redis-keys` | de la documentation |
-| `ci/coverage-report` | l'intégration continue |
+| Exemple                     | Pour                   |
+| --------------------------- | ---------------------- |
+| `feat/offer-search`         | une fonctionnalité     |
+| `fix/gateway-refresh-token` | une correction         |
+| `docs/redis-keys`           | de la documentation    |
+| `ci/coverage-report`        | l'intégration continue |
 
 ## Les commits
 
