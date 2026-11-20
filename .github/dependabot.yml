@@ -9,6 +9,20 @@ updates:
     groups:
       dependencies:
         patterns: ['*']
+    # Montées majeures bloquées tant que les plugins ne les supportent pas.
+    # À retirer, puis à faire dans une PR dédiée, dès que c'est le cas.
+    ignore:
+      # typescript-eslint 8 exige TypeScript < 6.1.
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
+      # eslint-plugin-react exige ESLint 9 au plus.
+      - dependency-name: eslint
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@eslint/js'
+        update-types: ['version-update:semver-major']
+      # eslint-plugin-unicorn 66 et plus exige ESLint 10.
+      - dependency-name: eslint-plugin-unicorn
+        update-types: ['version-update:semver-major']
     commit-message:
       prefix: build
       include: scope
