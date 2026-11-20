@@ -13,7 +13,10 @@ updates:
       prefix: build
       include: scope
   - package-ecosystem: github-actions
-    directory: /
+    # Les workflows et l'action locale de préparation, épinglés par SHA.
+    directories:
+      - /
+      - /.github/actions/setup
     schedule:
       interval: weekly
     target-branch: develop
