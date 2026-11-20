@@ -6,6 +6,11 @@ updates:
       interval: weekly
     target-branch: develop
     open-pull-requests-limit: 5
+    # Une version publiée depuis moins de 7 jours n'est pas proposée : la
+    # plupart des versions piratées sont retirées avant. Les correctifs de
+    # sécurité ne sont pas retardés.
+    cooldown:
+      default-days: 7
     groups:
       dependencies:
         patterns: ['*']
