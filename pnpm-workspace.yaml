@@ -1,0 +1,6 @@
+packages:
+  - apps/*
+  - packages/*
+
+# Refuse l'installation si la version de Node ne respecte pas "engines".
+engineStrict: true
