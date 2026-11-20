@@ -4,3 +4,9 @@ packages:
 
 # Refuse l'installation si la version de Node ne respecte pas "engines".
 engineStrict: true
+
+# Versions partagées : les package.json y renvoient avec "catalog:".
+catalog:
+  '@types/node': 26.6.6
+  # typescript-eslint 8 supporte TypeScript < 6.1.
+  typescript: 6.0.3

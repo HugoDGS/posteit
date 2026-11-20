@@ -4,6 +4,14 @@
   "private": true,
   "description": "Poste-it, la plateforme d'offres d'emploi et de stages qui lit votre CV et explique chaque score.",
   "type": "module",
+  "scripts": {
+    "typecheck": "pnpm -r --if-present typecheck"
+  },
+  "devDependencies": {
+    "@posteit/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  },
   "packageManager": "pnpm@12.21.0",
   "engines": {
     "node": ">=24"

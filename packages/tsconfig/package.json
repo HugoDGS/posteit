@@ -1,0 +1,19 @@
+{
+  "name": "@posteit/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Configurations TypeScript partagées de Poste-it.",
+  "type": "module",
+  "exports": {
+    "./base.json": "./base.json",
+    "./nest.json": "./nest.json",
+    "./node.json": "./node.json",
+    "./react.json": "./react.json"
+  },
+  "files": [
+    "*.json"
+  ],
+  "peerDependencies": {
+    "typescript": "*"
+  }
+}
